@@ -19,6 +19,7 @@
         "express-fileupload": "^1.4.0",
         "express-mongo-sanitize": "^2.2.0",
         "helmet": "^7.0.0",
+        "http-errors": "^2.0.0",
         "winston": "^3.10.0"
     },
     "devDependencies": {

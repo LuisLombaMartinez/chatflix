@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import fileUpload from 'express-fileupload';
 import cors from "cors";
+import createHttpError from 'http-errors';
 
 // dotEnv config
 dotenv.config();
@@ -46,10 +47,24 @@ app.use(cors({
     origin: process.env.CLIENT_URL
 }));
 
-
-
 app.post('/test', (req, res) => {
-    res.send(`request received from ${req.body.name}`);
+    throw createHttpError.BadRequest('This is a bad request!');
+});
+
+// define default error messages
+app.use(async (req, res, next) => {
+    next(createHttpError.NotFound('This route does not exist!'));
+});
+
+// error handling
+app.use(async (err, req, res, next) => {
+    res.status(err.status || 500);
+    res.send({
+        error: {
+            status: err.status || 500,
+            message: err.message || "Internal Server Error",
+        },
+    });
 });
 
 export default app;
