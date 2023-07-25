@@ -8,6 +8,7 @@ import compression from 'compression';
 import fileUpload from 'express-fileupload';
 import cors from "cors";
 import createHttpError from 'http-errors';
+import routes from './routes/index.js';
 
 // dotEnv config
 dotenv.config();
@@ -47,9 +48,8 @@ app.use(cors({
     origin: process.env.CLIENT_URL
 }));
 
-app.post('/test', (req, res) => {
-    throw createHttpError.BadRequest('This is a bad request!');
-});
+// api v1 routes
+app.use('/api/v1', routes);
 
 // define default error messages
 app.use(async (req, res, next) => {
