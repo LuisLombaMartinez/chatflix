@@ -1,5 +1,5 @@
 import app from "./app.js";
-import logger from "./config/logger.config.js";
+import logger from "./configs/logger.config.js";
 import mongoose from "mongoose";
 
 // env variables
