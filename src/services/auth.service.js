@@ -62,9 +62,6 @@ export const signUser = async (email, password) => {
 
     // check if password is correct
     let passwordMatches = await bcrypt.compare(password, user.password);
-    console.log(user)
-    console.log(user.password)
-    console.log(password)
     if (!passwordMatches) {
         throw createHttpError.NotFound("Invalid credentials assadas");
     }

@@ -10,3 +10,13 @@ export const generateToken = (payload, expiresIn, secret) => {
         throw error;
     }
 };
+
+export const verifyToken = async (token, secret) => {
+    try {
+        const decoded = await jwt.verify(token, secret);
+        return decoded;
+    } catch (error) {
+        logger.error(error);
+        throw error;
+    }
+}
