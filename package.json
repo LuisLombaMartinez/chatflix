@@ -21,6 +21,7 @@
         "express-mongo-sanitize": "^2.2.0",
         "helmet": "^7.0.0",
         "http-errors": "^2.0.0",
+        "jsonwebtoken": "^9.0.1",
         "mongoose": "^7.4.1",
         "trim-request": "^1.0.6",
         "validator": "^13.9.0",
