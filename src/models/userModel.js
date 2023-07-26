@@ -37,7 +37,9 @@ userSchema.pre("save", async function (next) {
     try {
         if (this.isNew) {
             const salt = await bcrypt.genSalt(12);
-            const hashedPassword = bcrypt.hash(this.password, salt);
+
+            // Ignore this error, you need to use await here, if not, the password will be saved as plain text
+            const hashedPassword = await bcrypt.hash(this.password, salt);
             this.password = hashedPassword;
         }
         next();
